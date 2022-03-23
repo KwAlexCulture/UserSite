@@ -20,6 +20,9 @@ using System.Text.RegularExpressions;
 using System.Drawing;
 using Rectangle = iTextSharp.text.Rectangle;
 using System.Net.Mail;
+using Twilio;
+using Twilio.Rest.Api.V2010.Account;
+using Twilio.Types;
 
 namespace KACOStudentCardWebPortal.Controllers
 {
@@ -737,12 +740,32 @@ namespace KACOStudentCardWebPortal.Controllers
             }
         }
 
+        static void SendWhatsAppMessage(string studentPhoneNo)
+        {
+            var accountSid = "AC72a70695bef375c2efe4565e82f17369";
+            var authToken = "6f7c77c41cf51b94ca5d55d1488f01de";
+            TwilioClient.Init(accountSid, authToken);
+
+            var messageOptions = new CreateMessageOptions(new PhoneNumber("whatsapp:" + studentPhoneNo));
+            messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
+            messageOptions.Body = "طلب جديد مرفوض";
+
+            var message = MessageResource.Create(messageOptions);
+            Console.WriteLine(message.Body);
+        }
+
         [HttpPost]
         public async Task<IActionResult> PostStudentCardDetails([FromBody] Student Student, IFormFile studentImage)
         {
             try
             {
                 var studentMail = Student.Email;
+
+                if(Student.RequestStatus == "مرفوض")
+                {
+                    SendWhatsAppMessage(Student.CellularNoEgypt);
+                }
+
                 //if (Student.RequestStatus == "مرفوض")
                 //{
                 //    MailAddress ccKate = new MailAddress(studentMail, "إفادة بحالة الطلب الخاص بإستخراج هوية الطالب");
