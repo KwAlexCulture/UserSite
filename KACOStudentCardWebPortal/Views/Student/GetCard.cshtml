@@ -1,0 +1,219 @@
+﻿@model BOL.Student
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+@*<script type="text/javascript">
+        window.addEventListener('load', removeColors);
+
+        function showColorImg() {
+            this.style.display = 'none';
+            this.nextSibling.style.display = 'inline';
+        }
+
+        function showGrayImg() {
+            this.previousSibling.style.display = 'inline';
+            this.style.display = 'none';
+        }
+
+        function removeColors() {
+            var aImages = document.getElementsByClassName('tableCard'),
+                nImgsLen = aImages.length,
+                oCanvas = document.createElement('canvas'),
+                oCtx = oCanvas.getContext('2d');
+            for (var nWidth, nHeight, oImgData, oGrayImg, nPixel, aPix, nPixLen, nImgId = 0; nImgId < nImgsLen; nImgId++) {
+                oColorImg = aImages[nImgId];
+                nWidth = oColorImg.offsetWidth;
+                nHeight = oColorImg.offsetHeight;
+                oCanvas.width = nWidth;
+                oCanvas.height = nHeight;
+                oCtx.drawImage(oColorImg, 0, 0);
+                oImgData = oCtx.getImageData(0, 0, nWidth, nHeight);
+                aPix = oImgData.data;
+                nPixLen = aPix.length;
+                for (nPixel = 0; nPixel < nPixLen; nPixel += 4) {
+                    aPix[nPixel + 2] = aPix[nPixel + 1] = aPix[nPixel] = (aPix[nPixel] + aPix[nPixel + 1] + aPix[nPixel + 2]) / 3;
+                }
+                oCtx.putImageData(oImgData, 0, 0);
+                oGrayImg = new Image();
+                oGrayImg.src = oCanvas.toDataURL();
+                oGrayImg.onmouseover = showColorImg;
+                oColorImg.onmouseout = showGrayImg;
+                oCtx.clearRect(0, 0, nWidth, nHeight);
+                oColorImg.style.display = "none";
+                oColorImg.parentNode.insertBefore(oGrayImg, oColorImg);
+            }
+        }
+    </script>*@
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>HTML TO IMAGE</title>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.js"></script>
+    @*<script type="text/javascript">
+
+        function downloadimage() {
+            //var container = document.getElementById("image-wrap"); //specific element on page
+            var container = document.getElementById("htmltoimage");; // full page
+            html2canvas(container, { allowTaint: true }).then(function (canvas) {
+
+                var ctx = canvas.getContext("2d");       // get 2D context of canvas
+
+                ctx.textBaseline = "top";                // start with drawing text from top
+                ctx.font = "20px sans-serif";            // set a font and size
+                ctx.fillStyle = "red";                   // set a color for the text
+                ctx.fillText("WATERMARK", 20, 20);       // draw the text at some position (x, y)
+                ctx.textAlign = "center";  // default: "start" = left-to-right/right-to-left
+                // depending on language, override with "left" or "right"
+
+                var link = document.createElement("a");
+                document.body.appendChild(link);
+                link.download = "html_image.jpg";
+                link.href = canvas.toDataURL();
+                link.target = '_blank';
+                link.click();
+            });
+        }
+
+    </script>*@
+    <script>
+        var img = new Image();
+        img.src = '/assets/cards/id/Card_layout.PNG';
+        img.width = '1200' ;
+        img.height = '600';
+        img.onload = function () {
+            var canvas = document.getElementById('canvas');
+            var fullName = canvas.getContext('2d');
+            fullName.drawImage(img, 0, 0, canvas.width, canvas.height);
+
+            // Draw the FullName
+            fullName.font = '10px Arial';
+            //fullName.globalCompositeOperation = 'lighter';
+            fullName.fillStyle = '#000';
+            fullName.textAlign = 'left';
+            fullName.textBaseline = 'middle';
+            fullName.fillText(document.getElementById('fullName').value, canvas.width / 1.85, canvas.height / 2.7);
+
+            // Draw the RegistrationNumber
+            fullName.font = '10px Arial';
+            //fullName.globalCompositeOperation = 'lighter';
+            fullName.fillStyle = '#993d00';
+            fullName.textAlign = 'left';
+            fullName.textBaseline = 'middle';
+            fullName.fillText(document.getElementById('registrationNo').value, canvas.width / 1.35, canvas.height / 3.55);
+
+            // Draw student image
+          
+            const ctx = canvas.getContext('2d');
+            const image = document.getElementById('studentImage');
+            image.addEventListener('load', e => {
+                ctx.drawImage(image, 33, 71, 104, 124, 21, 20, 87, 104);
+            });
+        };
+    </script>
+    @*<style>
+        #htmltoimage {
+            width: 65%;
+            margin: auto;
+        }
+    </style>*@
+</head>
+<body>
+    @*<div id="htmltoimage">
+            <div class="imgbg">
+                <img src="~/assets/cards/id/Card_layout.PNG" alt="" srcset="" style="z-index:-1">
+            </div>
+            <br>
+            <button onclick="downloadimage()" class="clickbtn" hidden>Click To Download Image</button>
+        </div>*@
+
+    <canvas id='canvas'></canvas>
+    <div style="display:block;">
+        <img id="studentImage"
+             src="~/image/getimage/@Model.ImageId"
+             width="200" height="180"/>
+    </div>
+    <input id="fullName" value="@Model.FullName" />
+    <input id="registrationNo" value="@Model.RegistrationNo" />
+    @*<canvas id="myCanvas" width="200" height="100"
+                style="border:1px solid #d3d3d3;">
+            Your browser does not support the canvas element.
+        </canvas>*@
+    @*<table class="tableCard" style="background-image:url(/assets/cards/id/card_layout.PNG); background-size:contain; width:700px">
+            <tr>
+                <td><strong>@Model.RegistrationNo </strong></td>
+            </tr>
+            <tr>
+                <td><strong>@Model.FullName </strong></td>
+            </tr>
+            <tr>
+                <td><strong>@Model.CollegeName </strong></td>
+
+            </tr>
+            <tr>
+                <td><strong>@Model.EducationLevel </strong></td>
+            </tr>
+            <tr>
+                <td><strong>@Model.NationalIDNo </strong></td>
+            </tr>
+            <tr>
+                <td><strong>@Model.PassportNo </strong></td>
+            </tr>
+            <tr>
+                <td><strong>تحريرا فى: @DateTime.Now.ToShortDateString() </strong></td>
+            </tr>
+        </table>*@
+
+    @*<img class="tableCard" src="~/assets/cards/id/card_layout.PNG" alt="Description of my picture" style="z-index:-1" />*@
+
+    @*<canvas id="canvas" width="300" height="150" style="border:1px solid #d3d3d3; background-image:url('/wwwroot//')">
+
+            </canvas>
+
+            <script>
+
+                var canvas = document.getElementById("canvas"),
+            ctx = canvas.getContext("2d");
+
+        canvas.width = 903;
+        canvas.height = 657;
+
+
+        var background = new Image();
+                background.src = "/assets/cards/id/card_layout.PNG";
+
+        // Make sure the image is loaded first otherwise nothing will draw.
+        background.onload = function(){
+            ctx.drawImage(background,0,0);
+        }
+
+                var c = document.getElementById("myCanvas");
+                var ctx = c.getContext("2d");
+
+
+
+                ctx.font = "20px Georgia";
+                ctx.fillText("Hello World!", 10, 50);
+
+                ctx.font = "30px Verdana";
+                // Create gradient
+                var gradient = ctx.createLinearGradient(0, 0, c.width, 0);
+                gradient.addColorStop("0", "magenta");
+                gradient.addColorStop("0.5", "blue");
+                gradient.addColorStop("1.0", "red");
+                // Fill with gradient
+                ctx.fillStyle = gradient;
+                ctx.fillText("Big smile!", 10, 90);
+                var background = new Image();
+                background.src = "~/assets/cards/id/card_layout.PNG";
+
+                // Make sure the image is loaded first otherwise nothing will draw.
+                background.onload = function () {
+                    ctx.drawImage(background, 0, 0);
+            </script>*@
+
+</body>
+</html>

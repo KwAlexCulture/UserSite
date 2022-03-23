@@ -1,0 +1,21 @@
+﻿
+@{
+    ViewData["Title"] = "Index_2";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="cz_post_content clr">
+                    @Html.Partial("_PartialDrKhaledOpeningWord")
+                    @Html.Partial("_PartialHomePageServices")
+                    @Html.Partial("_PartialHomePageNewsSection")
+                    @Html.Partial("_PartialHomePageStudentIssues")
+                    @Html.Partial("_PartialHomePageCollegesList")
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

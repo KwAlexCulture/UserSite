@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewData["Title"] = "خطأ فى إدخال البيانات";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["thisPageMessage"] = "خطأ فى إدخال البيانات أو رقم مدنى موجود سابقا";
+}
+<div class="page_cover xtra-cover-type-title">
+    <div class="page_title" data-title-parallax="">
+        <div class="right_br_full_container clr">
+            <div class="row clr">
+                <div class="lefter">
+                    <h1 class="section_title ">إستخراج بطاقة طالب</h1>
+                </div>
+                <div class="righter">
+                    <div class="breadcrumbs clr">
+                        <b><a href="~/home/"><span><i class="fa fa-home cz_breadcrumbs_home"></i></span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b class="inactive_l"><a class="cz_br_current" href="~/home/"><span>خطأ فى إدخال البيانات</span></a></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="vc_row wpb_row vc_row-fluid">
+                    <div class="wpb_column vc_column_container vc_col-sm-12">
+                        <div class="vc_column-inner">
+                            <div class="wpb_wrapper">
+                                <div class="cz_gap clr  hide_on_tablet hide_on_mobile"></div>
+                                <div class="cz_gap show_on_tablet clr " style="height: 50px"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill">
+                    <div class="wpb_column vc_column_container">
+                        <div class="vc_column-inner vc_custom_1585687734462">
+                            <div class="wpb_wrapper">
+                                <h2><i class="fa fa-hand-stop-o" style="color:darkred"></i> يبدو ان هناك خطأ ما فى البيانات أو البريد الإلكترونى أو رقم مدنى مكرر. من فضلك تأكد من صحة بياناتك. شكرا  </h2>
+                                <h3> <a href="~/student/postIdCardRequest" style="color:green" class="btn btn-outline-light"><i class="fa fa-forward"></i> الرجوع لصفحة التسجيل </a></h3>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

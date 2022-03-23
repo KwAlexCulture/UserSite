@@ -1,0 +1,49 @@
+﻿@model BOL.Student
+
+@{
+    ViewData["Title"] = "GetIdCardDetils";
+    //Layout = "~/Views/Shared/_Few_Featured_Layout.cshtml";
+}
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" />
+<link rel="stylesheet" href="~/css/card-style.css">
+
+<br />
+@*<div style="background-image:url(/assets/cards/id/card_layout.PNG)">
+
+    </div>*@
+@*<img src="~/assets/cards/id/card_layout.PNG" style="box-shadow: 0 2px 2px 2px #e1e1e1; width: 870px; padding: 15px; border-radius: 2px; margin: auto; text-align: center; z-index:-1"/>*@
+
+<br />
+<div class="card">
+    @*<img src="~/image/getimage/@Model.ImageId" alt="image" />*@
+    @*<h3>بطاقة طالب</h3>
+        <h3 style="color:coral">للعام الدراسى - 2021 / 2022</h3>*@
+
+    <table style="background-image:url(/assets/cards/id/card_layout.PNG); background-size:contain; width:700px; background-repeat:no-repeat">
+        <tr>
+            <td><strong>@Model.RegistrationNo </strong></td>
+        </tr>
+        <tr>
+            <td><strong>@Model.FullName </strong></td>
+        </tr>
+        @*<tr>
+            <td><strong>@Model.CollegeName </strong></td>
+
+        </tr>*@
+        <tr>
+            <td><strong>@Model.EducationLevel </strong></td>
+        </tr>
+        <tr>
+            <td><strong>@Model.NationalIDNo </strong></td>
+        </tr>
+        <tr>
+            <td><strong>@Model.PassportNo </strong></td>
+        </tr>
+        <tr>
+            <td><strong>@DateTime.Now.ToShortDateString() </strong></td>
+        </tr>
+    </table>
+</div>
+<br />
+

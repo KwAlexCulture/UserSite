@@ -1,0 +1,21 @@
+@font-face {
+  font-family: 'El Messiri';
+  font-style: normal;
+  font-weight: 500;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmessiri/v10/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuXCe55njDk.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'El Messiri';
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/elmessiri/v10/K2FhfZBRmr9vQ1pHEey6GIGo8_pv3myYjuUXfJ5njDk.ttf) format('truetype');
+}
+@font-face {
+  font-family: 'Roboto';
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url(https://fonts.gstatic.com/s/roboto/v29/KFOmCnqEu92Fr1Mu4mxP.ttf) format('truetype');
+}

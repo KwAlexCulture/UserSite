@@ -1,0 +1,197 @@
+﻿
+@{
+    ViewData["Title"] = "نموذج إستخراج نموذج الرسوم الدراسية";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["currentIsServicesPage"] = "current_menu";
+}
+
+<script src="~/scripts/feePaymentRequest.js"></script>
+
+<div class="page_cover xtra-cover-type-title">
+    <div class="page_title" data-title-parallax="">
+        <div class="right_br_full_container clr">
+            <div class="row clr">
+                <div class="lefter">
+                    <h1 class="section_title ">طلب  سداد الرسوم الدراسية</h1>
+                </div>
+                <div class="righter">
+                    <div class="breadcrumbs clr">
+                        <b><a href="~/home/"><span><i class="fa fa-home cz_breadcrumbs_home"></i></span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b><a href="~/Service/GetServicesList/"><span>الخدمات الإلكترونية</span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b class="inactive_l"><a class="cz_br_current" href="#"><span>طلب  سداد الرسوم الدراسية</span></a></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="cz_post_content clr">
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 40px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cz_77024" class="cz_77024 cz_title clr cz_smart_fs cz_mobile_text_center cz_title_ba_line cz_title_pos_inline">
+                        <div class="cz_title_content">
+                            <div class="cz_wpe_content">
+                                <p>
+                                    <span style="font-size: 18px; color: #aaaaaa;">طلب  سداد الرسوم الدراسية</span>
+                                </p>
+                                <h3>
+                                    <span style="font-size: 36px;">من فضلك أدخل كافة البيانات لإستكمال <span style="color: #439a0d;">نموذج سداد الرسوم</span></span>
+                                </h3>
+                            </div>
+                            <div class="cz_title_line cz_line_after_title">
+                                <span>_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wpb_text_column wpb_content_element  center_on_mobile">
+                        <div class="wpb_wrapper">
+                            <p>
+                                <span style="font-size: 18px; color: #666666;">يرجى التأكد من أن جميع البيانات المدخلة صحيحة و دقيقة حتى يسهل تنفيذ الطلب</span>
+                            </p>
+                        </div>
+                    </div>
+                    <form action="/FeePayment/PostFeePaymentRequest"
+                          id="feePaymentRequestForm"
+                          name="feePaymentRequestForm"
+                          method="post"
+                          class="wpcf7-form init"
+                          data-status="init"
+                          enctype="multipart/form-data">
+                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill" style="direction:rtl" dir="rtl">
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-12" style="float:left">
+                                <div class="vc_column-inner vc_custom_1585687734462">
+                                    <div class="wpb_wrapper">
+                                        <div id="cz_64089" class="cz_64089 cz_cf7 clr">
+                                            <div>
+                                                <div role="form" class="wpcf7" id="wpcf7-f791-p18-o1" lang="en-US" dir="rtl">
+                                                    <div class="screen-reader-response">
+                                                        <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                        <ul></ul>
+                                                    </div>
+                                                    @ViewBag.ID
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="791">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.5.2">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f791-p18-o1">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="18">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                        <input id="success_id" type="text" value="@ViewBag.Success" hidden />
+                                                        <input id="mailSuccess_id" type="text" value="@ViewBag.mailSuccess" hidden />
+                                                        @*<input id="RegistrationNo" name="RegistrationNo" type="number" value="@ViewBag.getMaxRegistrationNo" />*@
+                                                    </div>
+                                                    <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                    <p>
+                                                        <label>الإسم بالكامل (كما بجواز السفر) (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="يرجى ادخال الإسم كما فى جواز السفر" type="text" id="FullName" name="FullName" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الرقم المدنى (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="30000000000" type="number" id="NationalIDNo" name="NationalIDNo" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الكلية </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="CollegeId" name="CollegeId" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                @foreach (var item in ViewBag.collegesDetails)
+                                                                {
+                                                                    <option value="@item.CollegeId">@item.CollegeName</option>
+                                                                }
+                                                            </select>
+                                                        </span>
+                                                        @*<span class="wpcf7-form-control-wrap menu-178">
+                                                <select required id="CollegeId" name="CollegeId" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                    <option value="">-- إختر --</option>
+                                                    <option value="94E3854B-D15E-4EC5-81F8-74E4BFB14D60">كلية الطب</option>
+                                                    <option value="561559F3-443D-4D73-978D-A1FCB0B26F50">كلية طب الأسنان</option>
+                                                </select>
+                                            </span>*@
+                                                    </p>
+                                                    <p>
+                                                        <label>الجامعة </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="UniversityId" name="UniversityId" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                @foreach (var item in ViewBag.universityDetails)
+                                                                {
+                                                                    <option value="@item.UniversityId">@item.UniversityName</option>
+                                                                }
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> المرجلة الدراسية</label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="EducationLevel" name="EducationLevel" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                <option value="الفرقة الأولى">الفرقة الأولى</option>
+                                                                <option value="الفرقة الثانية">الفرقة الثانية</option>
+                                                                <option value="الفرقة الثالثة">الفرقة الثالثة</option>
+                                                                <option value="الفرقة الرابعة">الفرقة الرابعة</option>
+                                                                <option value="الفرقة الخامسة">الفرقة الخامسة</option>
+                                                                <option value="الفرقة السادسة">الفرقة السادسة</option>
+                                                                <option value="ماجستير">ماجستير</option>
+                                                                <option value="دكتوراه">دكتوراه</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> هل لديك أشقاء بنفس الكلية؟</label>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="IsHavingSiblingsSameCollege" name="IsHavingSiblingsSameCollege" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                <option value="True">نعم</option>
+                                                                <option value="False">لا</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <br>
+                                                    <div class="" style="height:20px"></div>
+                                                    <hr />
+                                                    <p>
+                                                        <br>
+                                                        <label> شروط إرسال الطلب</label>
+                                                        <input required type="checkbox" id="termsOfUse" name="termsOfUse" /> أقر أن جميع البيانات المدخلة صحيحة و تخصنى. و سيتم تنفيذ الطلب بعد تدقيق و مراجعة البيانات.
+                                                    </p>
+                                                    <p>
+                                                        <button type="button" name="submit" onclick="return sendFeePaymentRequest();">إرسال الطلب</button>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

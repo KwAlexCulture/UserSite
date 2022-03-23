@@ -1,0 +1,53 @@
+﻿@model BOL.Student
+
+@{
+    ViewData["Title"] = "Student Card View";
+    Layout = "~/Views/Shared/_Few_Featured_Layout.cshtml";
+    ViewData["FeaturesExistance"] = "less";
+}
+<script type="text/javascript">
+    //<![CDATA[
+    window.addEventListener('resize', function () {
+        //var x = window.innerWidth * 0.7;
+        //x = (x < 200) ? 200 : x;
+        canvas.width = 860;
+        canvas.height = 520;
+        containercanvas.width = 860;
+        containercanvas.height = 520;
+        var c = document.getElementById("canvas");
+        fullName.style.paddingTop("25px");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Droid Arabic Kufi";
+        ctx.fillText("Text", (canvas.width / 2) - 17, (canvas.height / 2) + 8);
+        //ctx.fillText("على محمد فهد العتيبى", 50, 50);
+        ctx.fillRect(100, 100, x / 2, x / 2);
+        ctx.fillStyle = "Black";
+        //ctx.fillRect(0, 0, 860, 520);
+        //base_image = new Image();
+        //base_image.src = 'img/base.png';
+        //context.drawImage(base_image, 0, 0);
+        var img = document.getElementById("card_layout");
+        ctx.drawImage(img, 10, 10);
+
+        @*var ctx2 = c.getContext("2d");
+        ctx2.font = "30px Droid Arabic Kufi";
+        ctx2.fillText("@Model.NationalIDNo.ToString()", 80, 50);
+        ctx2.fillRect(0, 0, x / 2, x / 2);
+        ctx2.fillStyle = "Transparent";*@
+    }, true);
+//]]>
+</script>
+
+<div class="row">
+    <div id="containercanvas" style="display:block; min-width:860px; min-height:520px">
+        <p id="getFullName" title="@Model.FullName"></p>
+        <canvas id="canvas" width=860 height=520 style="width: 860px;
+        height: 520px;
+        background-size: 860px;
+        background-repeat: no-repeat;
+        background-position: center">
+        </canvas>
+        @*<img id="card_layout" src="~/assets/cards/id/card_layout.PNG" style="align-content:center; z-index:0; display:normal" />*@
+    </div>
+  
+</div>  

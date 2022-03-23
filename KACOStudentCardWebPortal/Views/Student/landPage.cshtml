@@ -1,0 +1,151 @@
+﻿@model BOL.Student
+
+@{
+    ViewData["Title"] = " طلب الحصول على بطاقة طالب";
+    Layout = "~/Views/Shared/_Few_Featured_Layout.cshtml";
+    ViewData["FeaturesExistance"] = "less";
+    ViewData["thisPageMessage"] = "عزيزى الطالب. جارى تحديث البيانات";
+}
+
+<div class="page_cover xtra-cover-type-title">
+    <div class="page_title" data-title-parallax="">
+        <div class="right_br_full_container clr">
+            <div class="row clr">
+                <div class="lefter">
+                    <h1 class="section_title ">إستخراج بطاقة طالب</h1>
+                </div>
+                <div class="righter">
+                    <div class="breadcrumbs clr">
+                        <b><a href="~/home/"><span><i class="fa fa-home cz_breadcrumbs_home"></i></span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b class="inactive_l"><a class="cz_br_current" href="index.htm"><span>إستخراج بطاقة طالب</span></a></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="cz_post_content clr">
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 40px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cz_77024" class="cz_77024 cz_title clr cz_smart_fs cz_mobile_text_center cz_title_ba_line cz_title_pos_inline">
+                        @*<div class="cz_title_content">
+                            <div class="cz_wpe_content">
+                                <p>
+                                    <span style="font-size: 18px; color: #aaaaaa;">بيانات الطالب</span>
+                                </p>
+                                <h3>
+                                    <span style="font-size: 36px;">من فضلك أدخل الرقم المدنى <span style="color: #439a0d;">بطاقة الطالب</span></span>
+                                </h3>
+                            </div>
+                            <div class="cz_title_line cz_line_after_title">
+                                <span>_</span>
+                            </div>
+                        </div>*@
+                    </div>
+                    <div class="wpb_text_column wpb_content_element  center_on_mobile">
+                        <div class="wpb_wrapper">
+                            <p>
+                                <span style="font-size: 18px; color: #666666;">جارى تحيدث الموقع من فضلك أرسل بياناتك بدءا من 20/12/2021</span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill">
+    <div class="wpb_column vc_column_container">
+        <div class="vc_column-inner vc_custom_1585687734462">
+            <div class="cz_wpe_content">
+                <h2 style="align-content:center"><i class="fa fa-user-shield" style="color:forestgreen"></i>جارى تحيدث الموقع من فضلك أرسل بياناتك بدءا من 20/12/2021</h2><i class="bg-success"></i>
+            </div>
+        </div>
+    </div>
+</div>
+                    <!--<form action="/Student/PostIdCardRequest"
+                          id="studentRequestIdCardForm"
+                          name="studentRequestIdCardForm"
+                          method="post"
+                          class="wpcf7-form init"
+                          data-status="init"
+                          enctype="multipart/form-data">
+                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill" style="direction:rtl" dir="rtl">
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-9" style="float:left">
+                                <div class="vc_column-inner vc_custom_1585687734462">
+                                    <div class="wpb_wrapper">
+
+                                        <div id="cz_64089" class="cz_64089 cz_cf7 clr">
+                                            <div>
+                                                <div role="form" class="wpcf7" id="wpcf7-f791-p18-o1" lang="en-US" dir="rtl">
+                                                    <div class="screen-reader-response">
+                                                        <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                        <ul></ul>
+                                                    </div>
+                                                    @ViewBag.ID
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="791">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.5.2">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f791-p18-o1">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="18">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                        <input id="success_id" type="text" value="@ViewBag.Success" hidden />
+                                                        <input id="mailSuccess_id" type="text" value="@ViewBag.mailSuccess" hidden />-->
+                                                        @*<input id="RegistrationNo" name="RegistrationNo" type="number" value="@ViewBag.getMaxRegistrationNo" />*@
+                                                    <!--</div>
+                                                    <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                    <p>
+                                                        <label> البريد الإلكترونى </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="ahmedkhaled@gmail.com" type="email" id="Email" name="Email" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الرقم المدنى </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="302060505456" type="number" id="NationalIDNo" name="NationalIDNo" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <button type="button" name="submit" onclick="return sendIdCardRequest();">إرسال الطلب</button>-->
+
+                                                        @*<input type="submit" onclick="sendIdCardRequest()" value="إرسال الطلب" class="wpcf7-form-control has-spinner wpcf7-submit">*@
+                                                    <!--</p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>-->
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 30px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 0px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

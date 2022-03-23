@@ -1,0 +1,66 @@
+﻿<link rel="stylesheet" href="~/css/bootstrap-modal.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+@*<div id="myModal" class="modal fade">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <iframe allowtransparency="true" src="https://www.formpl.us/form/2119036050" frameborder="0" style="width:100%; height:600px; border:none;" scrolling="yes"></iframe>
+        </div>
+    </div>
+</div>*@
+
+<!-- Modal -->
+<script>
+    $(document).ready(function () {
+        $("#myModal").modal('show');
+    });
+</script>
+
+<div id="myModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h3 id="myModalLabel">Get Middle.</h3>
+    </div>
+    <div class="modal-body">
+        <div class="form-inline">
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input class="span2" id="lowSide" type="text" />
+            </div>
+            to
+            <div class="input-prepend">
+                <span class="add-on">$</span>
+                <input class="span2" id="highSide" type="text" />
+            </div>
+            <button class="btn" onClick="enteredRange(lowSide.value,highSide.value)">Enter</button>
+        </div>
+        <br />
+        <div class="form-inline">
+            <label>middle:</label>
+            <input id="middle" type="text" />
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="updateStudentInfoModal" tabindex="-1" role="dialog" aria-labelledby="updateStudentInfoModal" aria-hidden="true">
+<div class="modal-dialog modal-dialog-centered" role="document">
+    <div class="modal-content">
+        <div class="modal-header">-->
+<h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+    </button>
+</div>
+<div class="modal-body">
+    <iframe allowtransparency="true" src="https://www.formpl.us/form/2119036050" frameborder="0" style="width:100%; height:600px; border:none;" scrolling="yes"></iframe>
+
+</div>
+<div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Save changes</button>
+    </div>
+</div>
+    </div>
+</div>

@@ -1,0 +1,60 @@
+﻿@model BOL.Card
+
+@{
+    ViewData["Title"] = "GetIdCardDetils";
+    Layout = null;
+}
+<script type="text/javascript">
+    //<![CDATA[
+    window.addEventListener('resize', function () {
+        //var x = window.innerWidth * 0.7;
+        //x = (x < 200) ? 200 : x;
+        canvas.width = 860;
+        canvas.height = 520;
+        containercanvas.width = 860;
+        containercanvas.height = 520;
+        var c = document.getElementById("canvas");
+        //fullName.style.paddingTop("25px");
+        var ctx = c.getContext("2d");
+        ctx.font = "30px Droid Arabic Kufi";
+        ctx.fillText("على محمد خيرلله فهد محمد", 50, 50);
+        ctx.fillRect(0, 0, x / 2, x / 2);
+        ctx.fillStyle = "Transparent";
+        //ctx.fillRect(0, 0, 860, 520);
+        //base_image = new Image();
+        //base_image.src = 'img/base.png';
+        //context.drawImage(base_image, 0, 0);
+        var img = document.getElementById("card_layout");
+        ctx.drawImage(img, 10, 10);
+
+        @*var ctx2 = c.getContext("2d");
+        ctx2.font = "30px Droid Arabic Kufi";
+        ctx2.fillText("@Model.NationalIDNo.ToString()", 80, 50);
+        ctx2.fillRect(0, 0, x / 2, x / 2);
+        ctx2.fillStyle = "Transparent";*@
+    }, true);
+//]]>
+</script>
+
+<br />
+
+<div class="row">
+    <div id="containercanvas" style="display:block; min-width:860px; min-height:520px">
+        @*<img id="fff" src="@Model.Image1" style="margin-left:150px" />*@
+        <img id="card_layout" src="~/assets/cards/id/card_layout.PNG" style="align-content:center" />
+        <p id="getFullName" contextmenu="" title=""></p>
+        <canvas id="canvas" width=860 height=520 style="width: 860px;
+        height: 520px;
+        background-size: 860px;
+        background-repeat: no-repeat;
+        background-position: center">
+        </canvas>
+
+    </div>
+
+</div>
+<div>
+    
+</div>
+
+<br />

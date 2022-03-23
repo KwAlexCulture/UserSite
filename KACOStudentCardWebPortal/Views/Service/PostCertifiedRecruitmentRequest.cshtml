@@ -1,0 +1,258 @@
+﻿
+@{
+    ViewData["Title"] = "طلب إستخراج مصدقة التجنيد";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["currentIsServicesPage"] = "current_menu";
+}
+
+<script src="~/scripts/certifiedRecruitmentRequest.js"></script>
+@*<script>
+    $("#IsStillEducating").change(function () {
+        var selected_option = $('#IsStillEducating').val();
+
+        if (selected_option === 'No') {
+            var stopage = document.getElementById("StopageReason");
+            stopage.style.display = "block";
+            //$('#stopage').attr('pk', '1').show();
+        }
+        if (selected_option != 'No') {
+            stopage.style.display = "none";
+            //$("#StopageReason").removeAttr('pk').hide();
+        }
+    })
+</script>*@
+<script type="text/javascript">
+    function questSelectCheckIsStillEducating(nameSelect) {
+        console.log(nameSelect);
+        if (nameSelect) {
+            trueOptionValue = document.getElementById("IsStillEducating").value;
+            if (trueOptionValue == 'No') {
+                document.getElementById("EducationDiscontinuityReasonSection").style.display = "block";
+            }
+            else {
+                document.getElementById("EducationDiscontinuityReasonSection").style.display = "none";
+            }
+        }
+        else {
+            document.getElementById("EducationDiscontinuityReasonSection").style.display = "none";
+        }
+    }
+</script>
+
+<div class="page_cover xtra-cover-type-title">
+    <div class="page_title" data-title-parallax="">
+        <div class="right_br_full_container clr">
+            <div class="row clr">
+                <div class="lefter">
+                    <h1 class="section_title ">طلب إستخراج مصدقة التجنيد</h1>
+                </div>
+                <div class="righter">
+                    <div class="breadcrumbs clr">
+                        <b><a href="~/home/"><span><i class="fa fa-home cz_breadcrumbs_home"></i></span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b><a href="~/Service/GetServicesList/"><span>الخدمات الإلكترونية</span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b class="inactive_l"><a class="cz_br_current" href="#"><span>طلب إستخراج مصدقة التجنيد</span></a></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="cz_post_content clr">
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 40px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cz_77024" class="cz_77024 cz_title clr cz_smart_fs cz_mobile_text_center cz_title_ba_line cz_title_pos_inline">
+                        <div class="cz_title_content">
+                            <div class="cz_wpe_content">
+                                <p>
+                                    <span style="font-size: 18px; color: #aaaaaa;">مصدقة التجنيد</span>
+                                </p>
+                                <h3>
+                                    <span style="font-size: 36px;">من فضلك أدخل كافة البيانات لإستخراج <span style="color: #439a0d;">مصدقة التجنيد</span></span>
+                                </h3>
+                            </div>
+                            <div class="cz_title_line cz_line_after_title">
+                                <span>_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wpb_text_column wpb_content_element  center_on_mobile">
+                        <div class="wpb_wrapper">
+                            <p>
+                                <span style="font-size: 18px; color: #666666;">من فضلك كن متأكدا من كافة البيانات المدخلة حتى يسهل إستخراج مصدقة التجنيد فى أسرع وقت من المكتب الثقافى بالأسكندرية</span>
+                            </p>
+                        </div>
+                    </div>
+                    <form action="/Service/PostCertifiedRecruitmentRequest"
+                          id="certifiedRecruitmentRequestForm"
+                          name="certifiedRecruitmentRequestForm"
+                          method="post"
+                          class="wpcf7-form init"
+                          data-status="init"
+                          enctype="multipart/form-data">
+                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill" style="direction:rtl" dir="rtl">
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-12" style="float:left">
+                                <div class="vc_column-inner vc_custom_1585687734462">
+                                    <div class="wpb_wrapper">
+                                        <div id="cz_64089" class="cz_64089 cz_cf7 clr">
+                                            <div>
+                                                <div role="form" class="wpcf7" id="wpcf7-f791-p18-o1" lang="en-US" dir="rtl">
+                                                    <div class="screen-reader-response">
+                                                        <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                        <ul></ul>
+                                                    </div>
+                                                    @ViewBag.ID
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="791">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.5.2">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f791-p18-o1">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="18">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                        <input id="success_id" type="text" value="@ViewBag.Success" hidden />
+                                                        <input id="mailSuccess_id" type="text" value="@ViewBag.mailSuccess" hidden />
+                                                        @*<input id="RegistrationNo" name="RegistrationNo" type="number" value="@ViewBag.getMaxRegistrationNo" />*@
+                                                    </div>
+                                                    <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                    <p>
+                                                        <label>الإسم بالكامل (كما بجواز السفر) (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="الإسم كما بجواز السفر" type="text" id="FullName" name="FullName" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الرقم المدنى (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="30000000000" type="number" id="NationalIDNo" name="NationalIDNo" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>  المحافظة (*)</label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="State" name="State" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                <option value="العاصمة">العاصمة</option>
+                                                                <option value="الأحمدي">الأحمدي</option>
+                                                                <option value="الفروانية">الفروانية</option>
+                                                                <option value="الجهراء">الجهراء</option>
+                                                                <option value="حولي">حولي</option>
+                                                                <option value="مبارك الكبير">مبارك الكبير	</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> تاريخ الميلاد (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="يوم / شهر / سنة" type="date" id="DOB" name="DOB" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> محل الميلاد (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="حولى" type="text" id="PlaceOfBirth" name="PlaceOfBirth" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> العنوان (بالكويت) (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <textarea required placeholder="20 شارع فيصل" type="text" id="KuwaitAddress" name="KuwaitAddress" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" rows="2"></textarea>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> العنوان بدولة الدراسة (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <textarea required placeholder="10 شارع مصطفى كامل" type="text" id="HostCountryAddress" name="HostCountryAddress" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false" rows="2"></textarea>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>المرحلة التعليمية (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="كلية الأداب" type="text" id="EducationStage" name="EducationStage" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الفرقة الدراسية </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="EducationLevel" name="EducationLevel" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                <option value="الفرقة الأولى">الفرقة الأولى</option>
+                                                                <option value="الفرقة الثانية">الفرقة الثانية</option>
+                                                                <option value="الفرقة الثالثة">الفرقة الثالثة</option>
+                                                                <option value="الفرقة الرابعة">الفرقة الرابعة</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الشهادة المتوقع الحصول عليها (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input requiredp placeholder="بكالوريوس" type="text" id="ExpetctedCertificate" name="ExpetctedCertificate" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>هل مازلت منتظما بالدراسة؟ (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="IsStillEducating" name="IsStillEducating" onchange="questSelectCheckIsStillEducating(this)" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                <option value="Yes">نعم</option>
+                                                                <option value="No">لا</option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p id="EducationDiscontinuityReasonSection" style="display:none">
+                                                        <label>سبب توقف الدراسة </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="سفر طارئ خارج بلد الدراسة" type="text" id="EducationDiscontinuityReason" name="EducationDiscontinuityReason" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <hr />
+                                                    <p>
+                                                        <br>
+                                                        <label> شروط إرسال الطلب (*) </label>
+                                                        <input required type="checkbox" id="termsOfUse" name="termsOfUse" /> أقر أن جميع البيانات المدخلة صحيحة و تخصنى. و سيتم تنفيذ الطلب بعد تدقيق و مراجعة البيانات.
+                                                    </p>
+                                                    <p>
+                                                        <button type="button" name="submit" onclick="return sendCertifiedRecruitmentRequest();">إرسال الطلب</button>
+                                                        @*<button type="submit" name="" onclick="return sendCertifiedRecruitmentRequest();" class="wpcf7-form-control has-spinner wpcf7-submit">إرسال الطلب</button>*@
+                                                        @*<input type="submit" onclick="return sendCertifiedRecruitmentRequest()" value="إرسال الطلب" class="wpcf7-form-control has-spinner wpcf7-submit" />*@
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+

@@ -1,0 +1,305 @@
+﻿@model BOL.Student
+
+@{
+    ViewData["Title"] = " طلب الحصول على بطاقة طالب";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    ViewData["thisPageMessage"] = "عزيزى الطالب. من فضلك أدخل البيانات الأتية بشكل صحيح حتى تتمكن من إستخراج بطاقة الطالب";
+    ViewData["currentIsServicesPage"] = "current_menu";
+}
+
+<script src="~/scripts/studentIdCardRequest.js"></script>
+
+<script type="text/javascript">
+
+    function PreviewImage() {
+        var oFReader = new FileReader();
+        oFReader.readAsDataURL(document.getElementById("ImageId").files[0]);
+
+        oFReader.onload = function (oFREvent) {
+            document.getElementById("previewImage").src = oFREvent.target.result;
+        };
+    };
+</script>
+
+<div class="page_cover xtra-cover-type-title">
+    <div class="page_title" data-title-parallax="">
+        <div class="right_br_full_container clr">
+            <div class="row clr">
+                <div class="lefter">
+                    <h1 class="section_title ">إستخراج بطاقة طالب</h1>
+                </div>
+                <div class="righter">
+                    <div class="breadcrumbs clr">
+                        <b><a href="~/home/"><span><i class="fa fa-home cz_breadcrumbs_home"></i></span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b><a href="~/Service/GetServicesList/"><span>الخدمات الإلكترونية</span></a></b>
+                        <i class="fas fa-angle-double-left"></i>
+                        <b class="inactive_l"><a class="cz_br_current" href=""><span>إستخراج بطاقة طالب</span></a></b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div id="page_content" class="page_content mt0 mb0">
+    <div class="row clr">
+        <section class="s12 clr">
+            <div class="cz_is_blank clr">
+                <div class="cz_post_content clr">
+                    <div class="vc_row-full-width vc_clearfix"></div>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 40px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 20px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="cz_77024" class="cz_77024 cz_title clr cz_smart_fs cz_mobile_text_center cz_title_ba_line cz_title_pos_inline">
+                        <div class="cz_title_content">
+                            <div class="cz_wpe_content">
+                                <p>
+                                    <span style="font-size: 18px; color: #aaaaaa;">بيانات الطالب</span>
+                                </p>
+                                <h3>
+                                    <span style="font-size: 36px;">من فضلك أدخل كافة البيانات لإستخراج <span style="color: #439a0d;">بطاقة الطالب</span></span>
+                                </h3>
+                            </div>
+                            <div class="cz_title_line cz_line_after_title">
+                                <span>_</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wpb_text_column wpb_content_element  center_on_mobile">
+                        <div class="wpb_wrapper">
+                            <p>
+                                <span style="font-size: 18px; color: #666666;">يشترط أن تكون الصورة (حديثة و بجودة عالية بنفس مواصفات صورة جواز السفر و صورة البطاقة المدنية و خلفية الصورة ذو لون ثابت  <span style="color:red"> لتجنب رفض الطلب و التأخير </span>) - من فضلك كن متأكدا من صحة البيانات المدخلة حتى يسهل إستخراج البطاقة فى أسرع وقت من المكتب الثقافى بالأسكندرية</span>
+                            </p>
+                        </div>
+                    </div>
+                    <form action="/Student/PostIdCardRequest"
+                          id="studentRequestIdCardForm"
+                          name="studentRequestIdCardForm"
+                          method="post"
+                          class="wpcf7-form init"
+                          data-status="init"
+                          enctype="multipart/form-data">
+                        <div class="vc_row wpb_row vc_row-fluid vc_custom_1497126171788 vc_row-has-fill" style="direction:rtl" dir="rtl">
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-3" style="float:right">
+                                <div class="vc_column-inner vc_custom_1585687490767">
+                                    <div class="wpb_wrapper">
+                                        <div id="cz_68258" class="cz_68258 cz_image clr cz_image_no_fx center_on_mobile">
+                                            <div class="">
+                                                <div class="cz_image_in">
+                                                    <div class="cz_main_image">
+                                                        <img id="previewImage" name="previewImage" width="300" height="300" style="width:300px; height:300px" src="~/assets/profile_img.JPG" data-czlz="" class="attachment-full" alt="">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="cz_eqh cz_content_box_parent_fx  ">
+                                            <div id="cz_85800" class="cz_85800 cz_content_box clr">
+                                                <div class="cz_box_front clr">
+                                                    <div class="cz_box_front_inner clr ">
+                                                        <span></span>
+                                                        <div>
+                                                            <div id="cz_67769" class="cz_67769 cz_title clr cz_mobile_text_center cz_title_has_icon cz_title_pos_inline">
+                                                                <div class="cz_title_content">
+                                                                    <i class="cz_title_icon_before fa fa-file-image-o"></i>
+                                                                    <div class="cz_wpe_content">
+                                                                        <input id="ImageId" type="file" name="ImageId" accept="image/*" onchange="PreviewImage();" />
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="wpb_column vc_column_container vc_col-sm-12 vc_col-lg-9" style="float:left">
+                                <div class="vc_column-inner vc_custom_1585687734462">
+                                    <div class="wpb_wrapper">
+
+                                        <div id="cz_64089" class="cz_64089 cz_cf7 clr">
+                                            <div>
+                                                <div role="form" class="wpcf7" id="wpcf7-f791-p18-o1" lang="en-US" dir="rtl">
+                                                    <div class="screen-reader-response">
+                                                        <p role="status" aria-live="polite" aria-atomic="true"></p>
+                                                        <ul></ul>
+                                                    </div>
+                                                    @ViewBag.ID
+                                                    <div style="display: none;">
+                                                        <input type="hidden" name="_wpcf7" value="791">
+                                                        <input type="hidden" name="_wpcf7_version" value="5.5.2">
+                                                        <input type="hidden" name="_wpcf7_locale" value="en_US">
+                                                        <input type="hidden" name="_wpcf7_unit_tag" value="wpcf7-f791-p18-o1">
+                                                        <input type="hidden" name="_wpcf7_container_post" value="18">
+                                                        <input type="hidden" name="_wpcf7_posted_data_hash" value="">
+                                                        <input id="success_id" type="text" value="@ViewBag.Success" hidden />
+                                                        <input id="mailSuccess_id" type="text" value="@ViewBag.mailSuccess" hidden />
+                                                        @*<input id="RegistrationNo" name="RegistrationNo" type="number" value="@ViewBag.getMaxRegistrationNo" />*@
+                                                    </div>
+                                                    <div class="wpcf7-response-output" aria-hidden="true"></div>
+                                                    <p>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input hidden required type="number" id="RegistrationNo" name="RegistrationNo" value="5000" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الإسم بالكامل (كما بجواز السفر) (*) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="الإسم كما بجواز السفر" type="text" id="FullName" name="FullName" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> رقم التليفون (المصرى) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="+201 ......" type="number" id="CellularNoEgypt" name="CellularNoEgypt" value="" size="40" class="thisFormClass wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> رقم التليفون (الكويتى) </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="+96 ......." type="number" id="CellularNoKuwait" name="CellularNoKuwait" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label> البريد الإلكترونى </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="youremail@gmail.com" type="email" id="Email" name="Email" style="text-align:right" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-required="true" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الرقم المدنى </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required placeholder="300000000000" type="number" id="NationalIDNo" name="NationalIDNo" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>رقم جواز السفر </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input requiredp placeholder="P00000000" type="text" id="PassportNo" name="PassportNo" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-invalid="false">
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>شهادة لمن يهمه الامر </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap">
+                                                            <input required type="file" id="FileId" name="FileId" />
+                                                        </span>
+                                                    </p>
+                                                    <br>
+                                                    <p>
+                                                        <label>الكلية </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="CollegeId" name="CollegeId" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                @foreach (var item in ViewBag.collegesDetails)
+                                                                {
+                                                                    <option value="@item.CollegeId">@item.CollegeName</option>
+                                                                }
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <p>
+                                                        <label>الجامعة </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="UniversityId" name="UniversityId" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- إختر --</option>
+                                                                @foreach (var item in ViewBag.universityDetails)
+                                                                {
+                                                                    <option value="@item.UniversityId">@item.UniversityName</option>
+                                                                }
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    @*<p>
+            <label> الكلبة و الجامعة</label>
+            <br>
+            <span class="wpcf7-form-control-wrap">
+                <input required type="text" placeholder="مثال: كلية الطب جامعة الأسكندرية أو كلية الهندسة جامعة فاروس" id="CollegeName" name="CollegeName" value="" size="40" class="wpcf7-form-control wpcf7-text wpcf7-validates-as-required" aria-invalid="false"/>
+            </span>
+        </p>*@
+                                                    @*<br>
+        <p>
+            <label> </label>
+            <br>
+            <span class="wpcf7-form-control-wrap menu-178">
+                <select required id="CollegeName" name="CollegeName" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                    <option value="">-- إختر الجامعة --</option>
+                    <option value="كلية الطب جامعة الأسكندرية">كلية الطب جامعة الأسكندرية</option>
+                    <option value="كلية طب الأسنان جامعة الأسكندرية">كلية طب الأسنان جامعة الأسكندرية</option>
+                    <option value="كلية الصيدلة جامعة الأسكندرية">كلية الصيدلة جامعة الأسكندرية</option>
+                </select>
+            </span>
+        </p>*@
+                                                    <br>
+                                                    <p>
+                                                        <label>المرحلة الدراسية </label>
+                                                        <br>
+                                                        <span class="wpcf7-form-control-wrap menu-178">
+                                                            <select required id="EducationLevel" name="EducationLevel" class="wpcf7-form-control wpcf7-select" aria-invalid="false">
+                                                                <option value="">-- المرحلة الدراسية --</option>
+                                                                <option value="الفرقة الأولى">الفرقة الأولى</option>
+                                                                <option value="الفرقة الثانية">الفرقة الثانية</option>
+                                                                <option value="الفرقة الثالثة">الفرقة الثالثة</option>
+                                                                <option value="الفرقة الرابعة">الفرقة الرابعة</option>
+                                                                <option value="الفرقة الخامسة">الفرقة الخامسة</option>
+                                                                <option value="الفرقة السادسة">الفرقة السادسة</option>
+                                                                <option value="ماجستير">ماجستير</option>
+                                                                <option value="دكتوراه">دكتوراه</option>
+                                                                <option value="دبلوم">دبلوم</option>
+                                                                <option value=""></option>
+                                                            </select>
+                                                        </span>
+                                                    </p>
+                                                    <hr />
+                                                    <p>
+                                                        <br>
+                                                        <label> شروط إرسال الطلب</label>
+                                                        <input required type="checkbox" id="termsOfUse" name="termsOfUse" /> أقر أن جميع البيانات المدخلة صحيحة و تخصنى. و سيتم إستخراج الهوية بعد تدقيق و مراجعة البيانات و المستندات المرفقة.
+                                                    </p>
+                                                    <p>
+                                                        <button type="button" name="submit" onclick="return sendIdCardRequest();">إرسال الطلب</button>
+
+                                                        @*<input type="submit" onclick="sendIdCardRequest()" value="إرسال الطلب" class="wpcf7-form-control has-spinner wpcf7-submit">*@
+                                                    </p>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+                    </form>
+                    <div class="vc_row wpb_row vc_row-fluid">
+                        <div class="wpb_column vc_column_container vc_col-sm-12">
+                            <div class="vc_column-inner">
+                                <div class="wpb_wrapper">
+                                    <div class="cz_gap clr  hide_on_tablet hide_on_mobile" style="height: 30px"></div>
+                                    <div class="cz_gap show_on_tablet clr " style="height: 0px"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
+
