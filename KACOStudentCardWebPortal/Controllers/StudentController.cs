@@ -564,7 +564,7 @@ namespace KACOStudentCardWebPortal.Controllers
                         ImageId = await SaveImage(ImageId),
                         CreatedOn = DateTime.Now,
                         ModifiedOn = DateTime.Now,
-                        RequestStatus = "In Review",
+                        RequestStatus = "تحت المعاينة",
                         StatusCode = true
                     };
          
@@ -760,12 +760,21 @@ namespace KACOStudentCardWebPortal.Controllers
             try
             {
                 var studentMail = Student.Email;
-
-                if(Student.RequestStatus == "مرفوض")
+                if (Student.RequestStatus == "تم إرسال رسالة برفض الطلب")
                 {
-                    SendWhatsAppMessage(Student.CellularNoEgypt);
+                    
                 }
-
+                else if(Student.RequestStatus == "مرفوض")
+                {
+                    string refuseMessage = "يرجى إرسال الطلب مرة أخرى على الرابط http://kwalexculture.org/student/postidcardrequest. شكرا .عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج الهوية";
+                    System.Diagnostics.Process.Start("http://api.whatsapp.com/send?phone=" + Student.CellularNoEgypt + "&text=" + refuseMessage);
+                    Student.RequestStatus = "تم إرسال رسالة برفض الطلب";
+                    //SendWhatsAppMessage(Student.CellularNoEgypt);
+                }
+                else if(Student.RequestStatus == "تم الإستلام")
+                {
+                    System.Diagnostics.Process.Start("http://api.whatsapp.com/send?phone=" + Student.CellularNoEgypt + "&text=" + "تم إستلام بطاقة الهوية");
+                }
                 //if (Student.RequestStatus == "مرفوض")
                 //{
                 //    MailAddress ccKate = new MailAddress(studentMail, "إفادة بحالة الطلب الخاص بإستخراج هوية الطالب");

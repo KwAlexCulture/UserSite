@@ -27,6 +27,7 @@ namespace BOL
         public Guid? ImageId { get; set; }
         public Guid? FileId { get; set; }
         public string RequestStatus { get; set; }
+        public string RefuseReason { get; set; }
         public bool StatusCode { get; set; }
     }
 }
