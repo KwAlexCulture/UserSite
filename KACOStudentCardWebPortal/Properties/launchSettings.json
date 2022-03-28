@@ -2,6 +2,10 @@
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
+    "iis": {
+      "applicationUrl": "http://l/KACOStudentCardWebPortal",
+      "sslPort": 0
+    },
     "iisExpress": {
       "applicationUrl": "http://localhost:50185",
       "sslPort": 44338
@@ -22,7 +26,8 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "nativeDebugging": false,
-      "applicationUrl": "http://localhost:5001"
+      "applicationUrl": "http://localhost:5001",
+      "jsWebView2Debugging": false
     }
   }
 }

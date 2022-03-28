@@ -23,6 +23,7 @@ using System.Net.Mail;
 using Twilio;
 using Twilio.Rest.Api.V2010.Account;
 using Twilio.Types;
+using static System.Net.WebRequestMethods;
 
 namespace KACOStudentCardWebPortal.Controllers
 {
@@ -740,18 +741,42 @@ namespace KACOStudentCardWebPortal.Controllers
             }
         }
 
-        static void SendWhatsAppMessage(string studentPhoneNo)
+        //static void SendWhatsAppMessage(string studentPhoneNo)
+        //{
+        //    var accountSid = "AC72a70695bef375c2efe4565e82f17369";
+        //    var authToken = "6f7c77c41cf51b94ca5d55d1488f01de";
+        //    TwilioClient.Init(accountSid, authToken);
+
+        //    var messageOptions = new CreateMessageOptions(new PhoneNumber("whatsapp:" + studentPhoneNo));
+        //    messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
+        //    messageOptions.Body = "طلب جديد مرفوض";
+
+        //    var message = MessageResource.Create(messageOptions);
+        //    Console.WriteLine(message.Body);
+        //}
+
+        static void SendWhatsAppMessage(Student student)
         {
-            var accountSid = "AC72a70695bef375c2efe4565e82f17369";
-            var authToken = "6f7c77c41cf51b94ca5d55d1488f01de";
-            TwilioClient.Init(accountSid, authToken);
+            var studentMail = student.Email;
+            if (student.RequestStatus == "تم إرسال رسالة برفض الطلب")
+            {
 
-            var messageOptions = new CreateMessageOptions(new PhoneNumber("whatsapp:" + studentPhoneNo));
-            messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
-            messageOptions.Body = "طلب جديد مرفوض";
+            }
+            else if (student.RequestStatus == "مرفوض")
+            {
+                string url = "http://kwalexculture.org/student/postidcardrequest";
+                string refuseMessage = " عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج الهوية من المكتب الثقافى للدواعى الأتية: " +
+                student.RefuseReason + " ." + "برجاء إرسال الطلب مرة أخرى من خلال الرابط: " + url + "\r\n" + " شكرا. ";
 
-            var message = MessageResource.Create(messageOptions);
-            Console.WriteLine(message.Body);
+                System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=" + student.CellularNoEgypt + "&text=" + refuseMessage);
+                student.RequestStatus = "تم إرسال رسالة برفض الطلب";
+                //SendWhatsAppMessage(Student.CellularNoEgypt);
+            }
+            else if (student.RequestStatus == "تم الإستلام")
+            {
+                string deliveringText = "تم إستلام بطاقة الهوية من المكتب الثقافى بالأسكندرية. رقم القيد : " + student.RegistrationNo;
+                System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=" + student.CellularNoEgypt + "&text=" + deliveringText);
+            }
         }
 
         [HttpPost]
@@ -759,22 +784,7 @@ namespace KACOStudentCardWebPortal.Controllers
         {
             try
             {
-                var studentMail = Student.Email;
-                if (Student.RequestStatus == "تم إرسال رسالة برفض الطلب")
-                {
-                    
-                }
-                else if(Student.RequestStatus == "مرفوض")
-                {
-                    string refuseMessage = "يرجى إرسال الطلب مرة أخرى على الرابط http://kwalexculture.org/student/postidcardrequest. شكرا .عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج الهوية";
-                    System.Diagnostics.Process.Start("http://api.whatsapp.com/send?phone=" + Student.CellularNoEgypt + "&text=" + refuseMessage);
-                    Student.RequestStatus = "تم إرسال رسالة برفض الطلب";
-                    //SendWhatsAppMessage(Student.CellularNoEgypt);
-                }
-                else if(Student.RequestStatus == "تم الإستلام")
-                {
-                    System.Diagnostics.Process.Start("http://api.whatsapp.com/send?phone=" + Student.CellularNoEgypt + "&text=" + "تم إستلام بطاقة الهوية");
-                }
+                SendWhatsAppMessage(Student);
                 //if (Student.RequestStatus == "مرفوض")
                 //{
                 //    MailAddress ccKate = new MailAddress(studentMail, "إفادة بحالة الطلب الخاص بإستخراج هوية الطالب");

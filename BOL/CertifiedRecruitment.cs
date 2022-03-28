@@ -25,6 +25,8 @@ namespace BOL
         public string EducationLevel { get; set; }
         public string EducationDiscontinuityReason { get; set; }
         public string RequestStatus { get; set; }
+        public string RefuseReason { get; set; }
+        public string CellularNoEgypt { get; set; }
         public bool StatusCode { get; set; }
     }
 }

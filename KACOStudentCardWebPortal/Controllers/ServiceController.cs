@@ -241,6 +241,10 @@ namespace KACOStudentCardWebPortal.Controllers
         public async Task<IActionResult> PrintStudentCertifiedRecruitment(Guid id, string ExportData)
         {
             var studentCertifiedRecruitment = _certificateRecruitmentService.Where(c => c.CertifiedRecruitmentId == id).SingleOrDefault();
+            CertifiedRecruitment certifiedRecruitment = new CertifiedRecruitment()
+            {
+                RequestStatus = "مطبوع",
+            };
             return View(studentCertifiedRecruitment);
            
 
@@ -288,6 +292,7 @@ namespace KACOStudentCardWebPortal.Controllers
                     {
                         FullName = CertifiedRecruitment.FullName,
                         NationalIDNo = CertifiedRecruitment.NationalIDNo,
+                        CellularNoEgypt = CertifiedRecruitment.CellularNoEgypt,
                         State = CertifiedRecruitment.State,
                         DOB = CertifiedRecruitment.DOB,
                         PlaceOfBirth = CertifiedRecruitment.PlaceOfBirth,
@@ -300,6 +305,7 @@ namespace KACOStudentCardWebPortal.Controllers
                         IsStillEducating = CertifiedRecruitment.IsStillEducating,
                         CreatedOn = DateTime.Now,
                         ModifiedOn = DateTime.Now,
+                        RequestStatus = "تحت المعاينة",
                         StatusCode = true
                     };
                     await _certificateRecruitmentService.SaveAsync(certifiedRecruitment);
@@ -536,6 +542,43 @@ namespace KACOStudentCardWebPortal.Controllers
         }
 
         //Admin Site Methods
+        static void RouteToWhatAppLink(string whatsAppLink)
+        {
+            WebRequest req = WebRequest.Create(whatsAppLink);
+            WebResponse resp = req.GetResponse();
+            StreamReader sr = new StreamReader(resp.GetResponseStream());
+            sr.ReadToEnd();
+            sr.Close();
+        }
+
+        static void SendCertifiedRecruitmentWhatsAppMessage(CertifiedRecruitment certifiedRecruitment)
+        {
+            if (certifiedRecruitment.RequestStatus == "تم إرسال رسالة برفض الطلب")
+            {
+             
+            }
+            else if (certifiedRecruitment.RequestStatus == "مرفوض")
+            {
+                string url = "http://kwalexculture.org/service/PostCertifiedRecruitmentRequest";
+                string refuseMessage = " عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج مصدقة التجنيد من المكتب الثقافى للدواعى الأتية: " +
+                certifiedRecruitment.RefuseReason + " ." + "برجاء إرسال الطلب مرة أخرى من خلال الرابط: " + url + "\r\n" + " شكرا. ";
+                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + refuseMessage);
+                //System.Diagnostics.Process.Start(@"C:\\Users\\IT-1\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\whatsapp.exe");
+                certifiedRecruitment.RequestStatus = "تم إرسال رسالة برفض الطلب";
+            }
+            else if (certifiedRecruitment.RequestStatus == "جاهز للإستلام و مختوم")
+            {
+                string notificationMessage = " عزيزى الطالب. يرجى التوجه لمقر المكتب الثقافى بالأسكندرية لإستلام مصدقة التجنيد الخاصة بكم. شكرا ";
+                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + notificationMessage);
+                certifiedRecruitment.RequestStatus = "تم إرسال رسالة بالحضور للإستلام";
+            }
+            else if (certifiedRecruitment.RequestStatus == "تم الإستلام")
+            {
+                string deliveryText = "تم إستلام مصدقة التجنيد من المكتب الثقافى بالأسكندرية.";
+                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + deliveryText);
+            }
+        }
+
         // Clinical Allowances
         [HttpGet]
         public IActionResult GetClinicalAllowancesList()
@@ -588,7 +631,7 @@ namespace KACOStudentCardWebPortal.Controllers
             {
                 ClinicalAllowance.StatusCode = true;
                 await _clinicalAllowanceService.SaveAsync(ClinicalAllowance);
-
+            
                 return new JsonResult(new { status = "saving succeeded" });
             }
             catch (Exception ex)
@@ -648,9 +691,9 @@ namespace KACOStudentCardWebPortal.Controllers
         {
             try
             {
+                SendCertifiedRecruitmentWhatsAppMessage(CertifiedRecruitment);
                 CertifiedRecruitment.StatusCode = true;
                 await _certificateRecruitmentService.SaveAsync(CertifiedRecruitment);
-
                 return new JsonResult(new { status = "saving succeeded" });
             }
             catch (Exception ex)

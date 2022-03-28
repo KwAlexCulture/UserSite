@@ -79,9 +79,12 @@ function sendCertifiedRecruitmentRequest() {
         bootbox.alert("من فضلك أدخل الإسم الرباعى");
         return false;
     }
-
     else if (document.getElementById('NationalIDNo').value === "") {
         bootbox.alert("من فضلك أدخل الرقم المدنى صحيحا");
+        return false;
+    }
+    else if (document.getElementById('CellularNoEgypt').value === "") {
+        bootbox.alert("من فضلك أدخل التليفون المصرى");
         return false;
     }
     else if (document.getElementById('DOB').value === "") {
@@ -142,6 +145,7 @@ function sendCertifiedRecruitmentRequest() {
     var formData = new FormData();
     formData.append('FullName', jQuery("#FullName").val());
     formData.append('NationalIDNo', jQuery("#NationalIDNo").val());
+    formData.append('CellularNoEgypt', jQuery("#CellularNoEgypt").val());
     formData.append('State', jQuery("#State").val());
     formData.append('DOB', jQuery("#DOB").val());
     formData.append('PlaceOfBirth', jQuery("#PlaceOfBirth").val());
@@ -151,6 +155,7 @@ function sendCertifiedRecruitmentRequest() {
     formData.append('EducationLevel', jQuery("#EducationLevel").val());
     formData.append('EducationDiscontinuityReason', jQuery("#EducationDiscontinuityReason").val());
     formData.append('ExpetctedCertificate', jQuery("#ExpetctedCertificate").val());
+    formData.append('RequestStatus', jQuery("#RequestStatus").val());
     formData.append('IsStillEducating', jQuery("#IsStillEducating :selected").val());
     var dialog = bootbox.dialog({
         message: '<p class="text-center mb-0"><i class="fa fa-spin fa-cog"></i> من فضلك إنتظر قليلا </p>',
