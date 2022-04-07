@@ -559,23 +559,23 @@ namespace KACOStudentCardWebPortal.Controllers
             }
             else if (certifiedRecruitment.RequestStatus == "مرفوض")
             {
-                string url = "http://kwalexculture.org/service/PostCertifiedRecruitmentRequest";
-                string refuseMessage = " عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج مصدقة التجنيد من المكتب الثقافى للدواعى الأتية: " +
-                certifiedRecruitment.RefuseReason + " ." + "برجاء إرسال الطلب مرة أخرى من خلال الرابط: " + url + "\r\n" + " شكرا. ";
-                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + refuseMessage);
+                //string url = "http://kwalexculture.org/service/PostCertifiedRecruitmentRequest";
+                //string refuseMessage = " عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج مصدقة التجنيد من المكتب الثقافى للدواعى الأتية: " +
+                //certifiedRecruitment.RefuseReason + " ." + "برجاء إرسال الطلب مرة أخرى من خلال الرابط: " + url + "\r\n" + " شكرا. ";
+                //System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + refuseMessage);
                 //System.Diagnostics.Process.Start(@"C:\\Users\\IT-1\\AppData\\Roaming\\Microsoft\\Windows\\Start Menu\\Programs\\whatsapp.exe");
                 certifiedRecruitment.RequestStatus = "تم إرسال رسالة برفض الطلب";
             }
             else if (certifiedRecruitment.RequestStatus == "جاهز للإستلام و مختوم")
             {
-                string notificationMessage = " عزيزى الطالب. يرجى التوجه لمقر المكتب الثقافى بالأسكندرية لإستلام مصدقة التجنيد الخاصة بكم. شكرا ";
-                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + notificationMessage);
+                //string notificationMessage = " عزيزى الطالب. يرجى التوجه لمقر المكتب الثقافى بالأسكندرية لإستلام مصدقة التجنيد الخاصة بكم. شكرا ";
+                //System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + notificationMessage);
                 certifiedRecruitment.RequestStatus = "تم إرسال رسالة بالحضور للإستلام";
             }
             else if (certifiedRecruitment.RequestStatus == "تم الإستلام")
             {
-                string deliveryText = "تم إستلام مصدقة التجنيد من المكتب الثقافى بالأسكندرية.";
-                System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + deliveryText);
+                //string deliveryText = "تم إستلام مصدقة التجنيد من المكتب الثقافى بالأسكندرية.";
+                //System.Diagnostics.Process.Start(@"https://api.whatsapp.com/send?phone=" + certifiedRecruitment.CellularNoEgypt + "&text=" + deliveryText);
             }
         }
 

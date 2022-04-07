@@ -480,30 +480,15 @@ namespace KACOStudentCardWebPortal.Controllers
             return View();
         }
 
-        public async Task<int> GetMaximumRegistrationNo(int maxRecord)
+        public async Task<int> GetMaximumRegistrationNo()
         {
             int getMaxRegistrationNo = _studentService.Where(s => s.StatusCode == true).Select(s => s.RegistrationNo).Max();
-            ViewBag.getMaxRegistrationNo = getMaxRegistrationNo + 1;
-            maxRecord = getMaxRegistrationNo + 1;
+            var maxRecord = getMaxRegistrationNo + 1;
             return maxRecord;
         }
 
         public IActionResult PostIdCardRequest(int RegistrationNo)
         {
-            //int getMaxRegNo = _studentService.Where(s => s.StatusCode == true).Select(s => s.RegistrationNo).Max();
-            //int regNo;
-            //if (getMaxRegNo != null)
-            //{
-            //    regNo = getMaxRegNo + 1;
-            //}
-            //else
-            //{
-            //    regNo = getMaxRegNo;
-            //};
-
-            //ViewBag.finalRegRecord = getMaxRegNo;
-            //int getMaxRegistrationNo = _studentService.Where(s => s.StatusCode == true).Select(s => s.RegistrationNo).Max();
-            //ViewBag.getMaxRegistrationNo = getMaxRegistrationNo + 1;
             var getCollegesList = _collegeService.Where(c => c.StatusCode == true).ToList();
             ViewBag.collegesDetails = getCollegesList;
             var getUniversitiesList = _universityService.Where(u => u.StatusCode == true).ToList();
@@ -518,19 +503,6 @@ namespace KACOStudentCardWebPortal.Controllers
             {
                 var checkingEmaialAvailability = _studentService.Where(s => s.Email == Student.Email).SingleOrDefault();
                 var checkingNationalIDNoAvailability = _studentService.Where(s => s.NationalIDNo == Student.NationalIDNo).SingleOrDefault();
-                int getMaxRegNo = await GetMaximumRegistrationNo(RegistrationNo);
-                int regNo;
-                //if (getMaxRegNo != null)
-                //{
-                //    regNo = RegistrationNo + 1;
-                //}
-                //else
-                //{
-                //    regNo = RegistrationNo;
-                //};
-
-                //ViewBag.finalRegRecord = regNo;
-                //int getHighestRegistrationNo = _studentService.Where(s => s.RegistrationNo == Student.RegistrationNo).Select(s =>s.RegistrationNo).Max() ;
                 //if (checkingEmaialAvailability != null)
                 //{
                 //    ModelState.AddModelError("Email", "هذا البريد الإلكترونى مسجل من قبل. من فضلك أدخل بريد إلكترونى أخر");
@@ -556,7 +528,7 @@ namespace KACOStudentCardWebPortal.Controllers
                         //CollegeName = Student.CollegeName,
                         EducationLevel = Student.EducationLevel,
                         PassportNo = Student.PassportNo,
-                        RegistrationNo = 5000,
+                        RegistrationNo = 1,
                         CellularNoEgypt = Student.CellularNoEgypt,
                         CellularNoKuwait = Student.CellularNoKuwait,
                         Email = Student.Email,
@@ -655,23 +627,10 @@ namespace KACOStudentCardWebPortal.Controllers
         {
             return View();
         }
-
-
-
-        //public IActionResult ViewCard(Guid id)
-        //{
-        //    ViewBag.getStudentDetails = _studentService.Where(s => s.StudentId == id).SingleOrDefault();
-        //    Card image = new Card();
-        //    image.Image1 = GenerateImage.GetDefaultBase64Image(ViewBag.getStudentDetails.FullName, new Font(FontFamily.GenericSansSerif, 50, FontStyle.Bold), Color.Black, Color.Transparent, 300, 200);
-        //    return View(image);
-        //}
-
         public IActionResult Index()
         {
             return View();
         }
-
-
 
 
         // Admin Site Methods //
@@ -741,20 +700,6 @@ namespace KACOStudentCardWebPortal.Controllers
             }
         }
 
-        //static void SendWhatsAppMessage(string studentPhoneNo)
-        //{
-        //    var accountSid = "AC72a70695bef375c2efe4565e82f17369";
-        //    var authToken = "6f7c77c41cf51b94ca5d55d1488f01de";
-        //    TwilioClient.Init(accountSid, authToken);
-
-        //    var messageOptions = new CreateMessageOptions(new PhoneNumber("whatsapp:" + studentPhoneNo));
-        //    messageOptions.From = new PhoneNumber("whatsapp:+14155238886");
-        //    messageOptions.Body = "طلب جديد مرفوض";
-
-        //    var message = MessageResource.Create(messageOptions);
-        //    Console.WriteLine(message.Body);
-        //}
-
         static void SendWhatsAppMessage(Student student)
         {
             var studentMail = student.Email;
@@ -764,18 +709,11 @@ namespace KACOStudentCardWebPortal.Controllers
             }
             else if (student.RequestStatus == "مرفوض")
             {
-                string url = "http://kwalexculture.org/student/postidcardrequest";
-                string refuseMessage = " عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج الهوية من المكتب الثقافى للدواعى الأتية: " +
-                student.RefuseReason + " ." + "برجاء إرسال الطلب مرة أخرى من خلال الرابط: " + url + "\r\n" + " شكرا. ";
-
-                System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=" + student.CellularNoEgypt + "&text=" + refuseMessage);
                 student.RequestStatus = "تم إرسال رسالة برفض الطلب";
-                //SendWhatsAppMessage(Student.CellularNoEgypt);
             }
             else if (student.RequestStatus == "تم الإستلام")
             {
                 string deliveringText = "تم إستلام بطاقة الهوية من المكتب الثقافى بالأسكندرية. رقم القيد : " + student.RegistrationNo;
-                System.Diagnostics.Process.Start("https://web.whatsapp.com/send?phone=" + student.CellularNoEgypt + "&text=" + deliveringText);
             }
         }
 
@@ -785,29 +723,6 @@ namespace KACOStudentCardWebPortal.Controllers
             try
             {
                 SendWhatsAppMessage(Student);
-                //if (Student.RequestStatus == "مرفوض")
-                //{
-                //    MailAddress ccKate = new MailAddress(studentMail, "إفادة بحالة الطلب الخاص بإستخراج هوية الطالب");
-                //    MailMessage myMail = new System.Net.Mail.MailMessage("no.reply@kwalexculture.org", studentMail);
-                //    SmtpClient companySmtpClient = new SmtpClient("mail.kwalexculture.org");
-                //    companySmtpClient.UseDefaultCredentials = true;
-
-                //    myMail.CC.Add("shady.nessim@kwalexculture.org");
-
-                //    myMail.Subject = "إفادة بحالة الطلب الخاص بإستخراج هوية الطالب";
-                //    myMail.SubjectEncoding = System.Text.Encoding.UTF8;
-
-                //    myMail.Body = " .عزيزى الطالب. نحيطكم علما بأن تم رفض طلب إستخراج الهوية لعدم إستيفاء البيانات الصحيحة أو الصورة الشخصية الملحقة غير مطابقة لمواصفات الطلب" +
-                //    "يرجى إرسال الطلب مرة أخرى على الرابط http://kwalexculture.org/student/postidcardrequest. شكرا";
-
-                //    myMail.BodyEncoding = System.Text.Encoding.UTF8;
-                //    myMail.IsBodyHtml = true;
-
-                //    //myMail.Attachments.Add(new Attachment(@"PathToAttachment"));
-
-                //    companySmtpClient.Send(myMail);
-                //}
-
                 Student.StatusCode = true;
                 //Client.ImageId = await SaveImage(clientImage).ConfigureAwait(true);
                 await _studentService.SaveAsync(Student);

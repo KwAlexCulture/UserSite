@@ -32,24 +32,24 @@ namespace KACOStudentCardWebPortal
             services.AddScoped(db =>
             new EntitiesDbContext(Configuration.GetConnectionString("KacoDbConnection")));
 
-            services.AddCors(c =>
-            {
-                c.AddPolicy("AllowCors", options => options.WithOrigins("http://localhost:4200")
-                                       .AllowAnyHeader()
-                                       .AllowAnyMethod()
-                                       .WithExposedHeaders("x-custom-header")
-                                       .SetPreflightMaxAge(TimeSpan.FromSeconds(10000))
-                                       );
-            });
             //services.AddCors(c =>
             //{
-            //    c.AddPolicy("AllowCors", options => options.WithOrigins("http://admin.kwalexculture.org")
-            //                               .AllowAnyHeader()
-            //                               .AllowAnyMethod()
-            //                               .WithExposedHeaders("x-custom-header")
-            //                               .SetPreflightMaxAge(TimeSpan.FromSeconds(10000))
-            //                               );
+            //    c.AddPolicy("AllowCors", options => options.WithOrigins("http://localhost:4200")
+            //                           .AllowAnyHeader()
+            //                           .AllowAnyMethod()
+            //                           .WithExposedHeaders("x-custom-header")
+            //                           .SetPreflightMaxAge(TimeSpan.FromSeconds(10000))
+            //                           );
             //});
+            services.AddCors(c =>
+            {
+                c.AddPolicy("AllowCors", options => options.WithOrigins("http://admin.kwalexculture.org")
+                                           .AllowAnyHeader()
+                                           .AllowAnyMethod()
+                                           .WithExposedHeaders("x-custom-header")
+                                           .SetPreflightMaxAge(TimeSpan.FromSeconds(10000))
+                                           );
+            });
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
